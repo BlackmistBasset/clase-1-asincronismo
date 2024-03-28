@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.drink__card {
+  margin-top: 200px;
+  width: 300px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid black;
+  text-align: center;
+}
+.drink__img {
+  width: 80%;
+  display: block;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.drink__name {
+  margin-bottom: 10px;
+}
