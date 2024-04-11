@@ -24,3 +24,5 @@ const cargarAlumna = (alumna) => {
       console.log(task);
     });
 };
+
+//cargarAlumna(alumnaNueva)
