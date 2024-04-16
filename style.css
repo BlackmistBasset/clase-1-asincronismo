@@ -7,6 +7,7 @@
 body {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
 }
@@ -57,4 +58,22 @@ body {
 
 .card h2 {
   margin-bottom: 20px;
+}
+
+#nueva-alumna {
+  margin-bottom: 15px;
+}
+
+#form-container {
+  position: relative;
+  top: -57%;
+  left: -7%;
+}
+
+#nueva-alumna-form {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

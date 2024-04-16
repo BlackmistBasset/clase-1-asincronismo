@@ -10,7 +10,20 @@
     <div class="spinner_container hidden">
       <img src="/spinner.svg" alt="Loading" />
     </div>
+    <button id="nueva-alumna">Nueva alumna</button>
     <div id="main-container"></div>
+    <div id="form-container" class="hidden">
+      <form id="nueva-alumna-form">
+        <label for="new-name-input">Nombre</label>
+        <input type="text" name="" id="new-name-input" />
+        <label for="new-location-input">Location</label>
+        <input type="text" name="" id="new-location-input" />
+        <label for="new-description-textarea">Description</label>
+        <textarea name="" id="new-description-textarea"></textarea>
+        <input type="submit" value="Aceptar" id="crearNuevaAlumnaBtn" />
+      </form>
+    </div>
+
     <script src="main.js"></script>
   </body>
 </html>
