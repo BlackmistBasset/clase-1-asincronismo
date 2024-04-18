@@ -8,8 +8,16 @@ const baseUrl = "https://661463082fc47b4cf27c3d2f.mockapi.io/api/alumnas";
 
 const getAlumnas = (fetchUrl) => {
   fetch(fetchUrl)
-    .then((res) => res.json())
-    .then((data) => renderAlumnas(data))
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        container.innerHTML = "No se encontraron alumnas";
+      }
+    })
+    .then((data) => {
+      renderAlumnas(data);
+    })
     .catch((err) => console.log(err));
 };
 
@@ -23,10 +31,11 @@ const renderAlumnas = (alumnas) => {
   setTimeout(() => {
     hideSpinner();
     container.innerHTML = "";
-    alumnas.forEach((alumna) => {
-      const { name, id } = alumna;
+    if (alumnas && alumnas.length > 0) {
+      alumnas.forEach((alumna) => {
+        const { name, id, comision, favouriteLanguage, modalidad } = alumna;
 
-      container.innerHTML += `
+        container.innerHTML += `
         <div class="card">
         <img
           src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQgByBT5IiAT_a2x9pUVb4VMoOrlzHH7Jrzj-HB5jzHlR4lNLMS"
@@ -35,13 +44,19 @@ const renderAlumnas = (alumnas) => {
         />
         <div class="card_text_container">
           <h2 class="card_title">${name}</h2>
+          <p>${comision}</p>
+          <p>${modalidad}</p>
+          <p>${favouriteLanguage}</p>
           <button class="view_detail_btn" data-cardid="${id}" >Ver Detalle</button>
         </div>
       </div>
       `;
-    });
+      });
 
-    asignarEventosVerDetalle(document.querySelectorAll(".view_detail_btn"));
+      asignarEventosVerDetalle(document.querySelectorAll(".view_detail_btn"));
+    } else {
+      container.innerHTML = "No se encontraron alumnas";
+    }
   }, 2000);
 };
 
@@ -253,4 +268,34 @@ nuevaAlumnaBtn.addEventListener("click", () => {
 
     console.log(nuevaAlumna);
   });
+});
+
+//https://661463082fc47b4cf27c3d2f.mockapi.io/api/alumnas?comision=&modalidad=&favouriteLanguage=
+
+// let comision = "";
+// let modalidad = "";
+// let favouriteLanguage = "";
+
+//let urlFiltro = `https://661463082fc47b4cf27c3d2f.mockapi.io/api/alumnas?comision=${comision}&modalidad=${modalidad}&favouriteLanguage=${favouriteLanguage}`;
+
+const urlObject = new URLSearchParams(baseUrl.search);
+console.log(urlObject);
+document.getElementById("comision").addEventListener("change", (e) => {
+  comision = e.target.value;
+  urlObject.set("comision", e.target.value);
+  console.log(urlObject);
+  console.log(`${baseUrl}/?${urlObject}`);
+  getAlumnas(`${baseUrl}/?${urlObject}`);
+});
+
+document.getElementById("modalidad").addEventListener("change", (e) => {
+  modalidad = e.target.value;
+  urlObject.set("modalidad", e.target.value);
+  getAlumnas(`${baseUrl}/?${urlObject}`);
+});
+
+document.getElementById("lenguajeFavorito").addEventListener("change", (e) => {
+  favouriteLanguage = e.target.value;
+  urlObject.set("favouriteLanguage", e.target.value);
+  getAlumnas(`${baseUrl}/?${urlObject}`);
 });

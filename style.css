@@ -18,11 +18,11 @@ body {
   border: 2px solid black;
   border-radius: 20px;
   padding: 20px;
-  height: 90vh;
+  height: 80vh;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 154px);
+  grid-template-rows: repeat(3, 210px);
   gap: 20px;
   overflow-y: auto;
 }
@@ -54,6 +54,8 @@ body {
 
 .card img {
   width: 100%;
+  height: 120px;
+  object-fit: contain;
 }
 
 .card h2 {
@@ -76,4 +78,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+#filtros {
+  margin-bottom: 20px;
 }
