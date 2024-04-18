@@ -1,0 +1,1 @@
+Creamos un crud extremadamente humilde (pero funcional) con todas las funcionalidades principales que debe tener el TP final del módulo de asincronismo. Deploy: https://blackmistbasset.github.io/clase-1-asincronismo/
